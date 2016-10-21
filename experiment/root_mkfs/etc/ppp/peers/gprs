@@ -1,0 +1,16 @@
+/dev/ttySAC3
+9600
+nodetach
+lock
+user "cmnet"
+nocrtscts
+modem
+hide-password
+usepeerdns
+noipdefault
+noccp
+defaultroute
+ipcp-accept-local
+ipcp-accept-remote
+connect 'chat -s -v -f /etc/ppp/peers/gprs-connect'
+disconnect 'chat -s -v -f /etc/ppp/peers/gprs-disconnect'
