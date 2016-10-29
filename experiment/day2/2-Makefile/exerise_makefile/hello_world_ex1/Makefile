@@ -1,5 +1,10 @@
 CC=$(CROSS_COMPILE)gcc
 
+AA ='1234' '5678'
+AA += 'DDDD'
+
+$(info AA=$(AA))
+
 CFLAGS=-Wl,-Map,out.map -lpthread -lm
 
 all: hello_world
