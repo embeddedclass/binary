@@ -26,7 +26,7 @@
 
 5.	Add the code in 
 		a ) logo.c
-			# geany ~/tiny4412/Day4/linux_3.5.0_tiny4412/drivers/video/logo/logo.c
+			# geany ~/tiny4412/experiment/tiny4412-kernel/linux_3.5.0_tiny4412/drivers/video/logo/logo.c
 
 			===========================================================================
 +			#ifdef CONFIG_LOGO_LARRY_CLUT224;
