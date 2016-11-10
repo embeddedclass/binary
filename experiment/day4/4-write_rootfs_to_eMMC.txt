@@ -25,7 +25,7 @@ Step 6 Unmounting the partitons.
 Step 7 reboot EVB and into Linux console with NFS
 
 Step 8 dd  rootfs_ext4.img to /dev/mmcblk0p2
-# dd if=/tmp/rootfs_ext4.img of=/dev/mmcblk0p2
+# dd if=./rootfs_ext4.img of=/dev/mmcblk0p2
 
 Step 9 Modify u-boot args then reboot
 # setenv bootargs 'noinitrd init=/linuxrc root=/dev/mmcblk0p2 rw noinitrd rootfstype=ext4 console=ttySAC0 lcd=S70'
