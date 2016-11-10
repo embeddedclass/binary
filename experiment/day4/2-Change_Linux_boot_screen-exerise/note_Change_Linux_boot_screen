@@ -55,7 +55,7 @@
 		add below to "drivers/video/logo/Makefile"
 		obj-$(CONFIG_LOGO_SUPERH_CLUT224)	+= logo_superh_clut224.o
 		obj-$(CONFIG_LOGO_M32R_CLUT224)		+= logo_m32r_clut224.o
-		obj-$(CONFIG_LOGO_LARRY_CLUT224) += logo_larry_clut224.o
++		obj-$(CONFIG_LOGO_LARRY_CLUT224) += logo_larry_clut224.o
 
 
 7.	[ HOST PC ]
