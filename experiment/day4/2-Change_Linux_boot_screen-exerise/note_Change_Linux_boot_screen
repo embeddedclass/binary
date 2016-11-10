@@ -5,7 +5,7 @@
 
 1.	[ HOST PC ] # sudo apt-get install netpbm
 
-2.	[ HOST PC ] # pngtopnm /path/to/larry.png | ppmquant -fs 223 | pnmtoplainpnm > logo_larry_clut224.ppm
+2.	[ HOST PC ] # pngtopnm /path/to/larry.png | ppmquant -fs 224 | pnmtoplainpnm > logo_larry_clut224.ppm
 
 3. 	copy the created .ppm file into ~/tiny4412/experiment/tiny4412-kernel/linux_3.5.0_tiny4412/drivers/video/logo
 		[ HOST PC ] # cp -a logo_larry_clut224.ppm ~/tiny4412/experiment/tiny4412-kernel/linux_3.5.0_tiny4412/drivers/video/logo
