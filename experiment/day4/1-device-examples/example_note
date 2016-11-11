@@ -27,6 +27,8 @@ B. buttons
 			Device Drivers  --->
 				Character devices  ---> 
 					 <*> Buttons driver for FriendlyARM Tiny4412 development boards
+				# make
+
 		2.	# cd buttons/
 		3.	# make
 		4.	# sudo make install
@@ -46,6 +48,8 @@ C. I2C
 				 <*> I2C support  --->
 					 I2C Hardware Bus support  --->
 						<*> S3C2410 I2C Driver
+				# make
+
 		2.	# cd i2c/
 		3.	# make
 		4.	# sudo make install
@@ -64,6 +68,8 @@ D. led-payer
 			Device Drivers  --->
 				Character devices  ---> 
 					<*> LED Support for FriendlyARM Tiny4412 GPIO LEDs
+				# make
+
 		2.	# cd led-payer/
 		3.	# make
 		4.	# sudo make install
@@ -81,6 +87,8 @@ E. led
 			Device Drivers  --->
 				Character devices  ---> 
 					<*> LED Support for FriendlyARM Tiny4412 GPIO LEDs
+				# make
+
 		2.	# cd led
 		3.	# make
 		4.	# sudo make install
@@ -99,6 +107,9 @@ F. pwm
 			Device Drivers  --->
 				Character devices  ---> 
 					<*> Buzzer driver for FriendlyARM Tiny4412 development boards
+
+				# make
+
 		2.	# cd pwm/
 		3.	# make
 		4.	# sudo make install

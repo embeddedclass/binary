@@ -4,13 +4,12 @@
 0.	# source /home/cadtc/tiny4412/experiment/set_arm_4412_toolchain_path.sh
 
 1.
-	# cd /home/cadtc/tiny4412/experiment/day4
-	# tar -xvjf /home/cadtc/tiny4412/experiment/day4 -C ../
-	# cd ../linux_3.5.0_tiny4412/
-
+		# cd /home/cadtc/tiny4412/experiment/day4
+			git clone https://github.com/embeddedclass/tiny4412-kernel.git
+			
 2.	# make distclean
 
-3.	# make tiny4412_linux_defconfig
+3.	# make tiny4412_rtl8188cu_linux_defconfig
 
 4.	# make -j4
 
@@ -182,7 +181,7 @@ For further info see the ./README file
 
 2.	# make kernelrelease
 
-3.	# INSTALL_MOD_PATH=${PRJROOT}/modules-KERNEL-VERSION
+3.	# INSTALL_MOD_PATH=INSTALL_PATH
 
 4.	# make modules_install
 
@@ -192,11 +191,11 @@ For further info see the ./README file
 				Modify ourself kernel version name
 =====================================================================
 
-1.	# make kernelrelease
+1. # make kernelrelease
 
-2	# make menuconfig
+2. # make menuconfig
 
-3	# General setup →  () Local version
+3. # General setup →  () Local version
 
 
 
@@ -204,9 +203,6 @@ For further info see the ./README file
 =====================================================================
 		Configure kernel (use menuconfig for configuration)
 =====================================================================
-
-Please reference
-tiny4412/Day4/Day-4-Kernel_Relation/1-basic-exerise/Configure-kernel.odt
 
 1.	# make menuconfig
 
@@ -225,11 +221,19 @@ tiny4412/Day4/Day-4-Kernel_Relation/1-basic-exerise/Configure-kernel.odt
 					Create kernel configure file
 =====================================================================
 
-1.	# make savedefconfig - we will get defconfig in local currently directory
+1.	# make savedefconfig (min) - we will get defconfig in local currently directory
 
 2.	# mv  defconfig hello_defconfig
 
 3.	# mv hello_defconfig  arch/arm/configs
+
+4.	# make help | grep hello – confirm our configure
+
+-----------------------------------------------------------------------
+
+1.	# cp .config  hello_all_defconfig(all) - we will get defconfig in local currently directory
+
+3.	# mv hello_all_defconfig  arch/arm/configs
 
 4.	# make help | grep hello – confirm our configure
 
@@ -241,14 +245,11 @@ tiny4412/Day4/Day-4-Kernel_Relation/1-basic-exerise/Configure-kernel.odt
 	
 [ Host ]
 2.  sudo dnw ~/tiny4412/experiment/day4/linux_3.5.0_tiny4412/arch/arm/boot/zImage
-		
-6.  ifconfig ethx 192.168.0.10
-	
+
 [ Target ] (u-boot)
 1.	dnw 0xc0008000
-3.	setenv serverip 192.168.0.10
-4.	setenv ipaddr 192.168.0.20
-5.        set bootargs noinitrd init=/linuxrc root=/dev/nfs ip=192.168.0.20:192.168.0.10:192.168.0.1:255.255.255.0::eth0:on nfsroot=192.168.0.10:/home/cadtc/tiny4412/experiment/root_mkfs, console=ttySAC0 lcd=S70
-	
-6.	savenv
-7.	bootm 0xc00080000
+
+3.  set bootargs noinitrd init=/linuxrc root=/dev/nfs ip=192.168.0.20:192.168.0.10:192.168.0.1:255.255.255.0::eth0:on nfsroot=192.168.0.10:/home/cadtc/tiny4412/experiment/root_mkfs, console=ttySAC0 lcd=S70
+
+4.	savenv
+5.	bootm 0xc00080000
