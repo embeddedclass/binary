@@ -4,7 +4,7 @@
 0.	# source /home/cadtc/tiny4412/experiment/set_arm_4412_toolchain_path.sh
 
 1.
-		# cd /home/cadtc/tiny4412/experiment/day4
+		# cd /home/cadtc/tiny4412/experiment/
 			git clone https://github.com/embeddedclass/tiny4412-kernel.git
 			
 2.	# make distclean
@@ -182,6 +182,7 @@ For further info see the ./README file
 2.	# make kernelrelease
 
 3.	# INSTALL_MOD_PATH=INSTALL_PATH
+			example : export INSTALL_MOD_PATH=/home/cadtc/work/tiny4412/experiment/tiny4412-kernel/module
 
 4.	# make modules_install
 
@@ -220,7 +221,7 @@ For further info see the ./README file
 =====================================================================
 					Create kernel configure file
 =====================================================================
-
+A:
 1.	# make savedefconfig (min) - we will get defconfig in local currently directory
 
 2.	# mv  defconfig hello_defconfig
@@ -230,12 +231,12 @@ For further info see the ./README file
 4.	# make help | grep hello – confirm our configure
 
 -----------------------------------------------------------------------
-
+B:
 1.	# cp .config  hello_all_defconfig(all) - we will get defconfig in local currently directory
 
 3.	# mv hello_all_defconfig  arch/arm/configs
 
-4.	# make help | grep hello – confirm our configure
+4.	# make help | grep hello_all – confirm our configure
 
 
 
@@ -244,12 +245,13 @@ For further info see the ./README file
 =========================================================================
 	
 [ Host ]
-2.  sudo dnw ~/tiny4412/experiment/day4/linux_3.5.0_tiny4412/arch/arm/boot/zImage
+2.	# cd ~/tiny4412/experiment/experiment/tiny4412-kernel/linux_3.5.0_tiny4412/arch/arm/boot
+			sudo dnw ./zImage
 
 [ Target ] (u-boot)
-1.	dnw 0xc0008000
+1.	# dnw 0xc0008000
 
-3.  set bootargs noinitrd init=/linuxrc root=/dev/nfs ip=192.168.0.20:192.168.0.10:192.168.0.1:255.255.255.0::eth0:on nfsroot=192.168.0.10:/home/cadtc/tiny4412/experiment/root_mkfs, console=ttySAC0 lcd=S70
+3.  # set bootargs noinitrd init=/linuxrc root=/dev/nfs ip=192.168.0.20:192.168.0.10:192.168.0.1:255.255.255.0::eth0:on nfsroot=192.168.0.10:/home/cadtc/tiny4412/experiment/root_mkfs, console=ttySAC0 lcd=S70
 
-4.	savenv
-5.	bootm 0xc00080000
+4.	# savenv
+5.	# bootm 0xc00080000

@@ -5,18 +5,17 @@ Introduction
 
 
 1. decompress php and thttpd on same level directory
-	$ cd ~
-	$ tar jxvf php-5.2.12.tar.bz2	
+	$ cd  day4/3-application-exerise/webserver
+	$ tar jxvf php-5.2.12.tar.bz2
 	$ tar zxvf thttpd-2.21b.tar.gz
 
 
 2. Configure and compile PHP making it aware of thttpd -> to generate Makefile -> make -> make install
 
 	$ cd ./php-5.2.12/
-	$ mkdir install
 	$ export CC=arm-linux-gcc
 	$ export CXX=arm-linux-cpp
-	$ ./configure --host=arm-linux --target=arm --prefix=install-arm --disable-short-tags --without-mysql --without-pear --disable-all --disable-short-tags --with-thttpd=../thttpd-2.21b
+	$ ./configure --host=arm-linux --target=arm --prefix=./install-arm --disable-short-tags --without-mysql --without-pear --disable-all --disable-short-tags --with-thttpd=../thttpd-2.21b
 
                 =======================================================================
                 Generating files
@@ -46,7 +45,7 @@ Introduction
 
 	
 	$ make -j4
-	        ==============
+	  ==============
 		Build complete.
 		Don't forget to run 'make test'.
 		==============
@@ -81,7 +80,9 @@ Introduction
 
 		copy php to Tiny4412
 		$ cd ../php-5.2.12/install-arm/
-		$ cp -rf * /home/cadtc/tiny4412/experiment/root_mkfs/usr/local
+		$ cp -rf ./bin/* /home/cadtc/tiny4412/experiment/root_mkfs/usr/local/bin
+			cp -rf ./lib/ /home/cadtc/tiny4412/experiment/root_mkfs/usr/local/
+			
 
     create thttpd.conf in Tiny4412
     $ cd ../thttpd-2.21b
@@ -117,7 +118,7 @@ Modify ERROR
 
 htpasswd.c:51: error: conflicting types for 'getline'
 
-vim extras/htpasswd.c Line:51
+sudo geany extras/htpasswd.c Line:51
 
 change "getline" to "mygetline"
 
