@@ -9,7 +9,8 @@ DESTDIR			   ?= /home/cadtc/tiny4412/experiment/root_mkfs
 endif
 
 CFLAGS				= -Wall -O2 -static
-CC					= arm-linux-gcc
+#CC					= arm-linux-gcc
+CC					= gcc
 INSTALL				= install
 
 TARGET				= i2c
