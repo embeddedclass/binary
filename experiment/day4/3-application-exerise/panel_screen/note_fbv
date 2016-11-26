@@ -48,13 +48,13 @@
 
 
 		$ tar xvf libpng-1.4.1.tar.bz2
-		$ cd ~/libpng-1.4.1
+		$ cd ./libpng-1.4.1
 		$ ./configure --host=arm-linux CC=arm-linux-gcc --prefix=/home/cadtc/tiny4412/experiment/day4/3-application-exerise/panel_screen/libpng-1.4.1
 		$ make -j4
 		$ make install
 	
 		$ tar xvf libungif-4.1.4.tar.gz
-		$ cd ~/libungif-4.1.4
+		$ cd ./libungif-4.1.4
 		$ ./configure --host=arm-linux CC=arm-linux-gcc --prefix=/home/cadtc/tiny4412/experiment/day4/3-application-exerise/panel_screen/libpng-1.4.1
 		$ make -j4
 		$ make install
@@ -65,11 +65,8 @@
 		$ cp libungif-4.1.4/./lib/.libs/libungif.a fbv-1.0b
 		$ cp libungif-4.1.4/lib/gif_lib.h fbv-1.0b
 		$ cp libpng-1.4.1/lib/libpng14.a fbv-1.0b
-		$ cd ~/fbv-0.99
+		$ cd fbv-1.0b
 		$ make
-
-		then "fbv" is generated in current directory and copy it/JPEG picture to ~/tiny4412/Day1/root_mkfs
-
 
 =======================================================================
 		6 run ./fbv demo.jpg and bmp on Target

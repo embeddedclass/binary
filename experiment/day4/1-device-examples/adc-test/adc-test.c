@@ -20,7 +20,7 @@ int main(int argc, char* argv[])
     int i = 0;
     char output[255];
     char buffer[30];
-    int fd = open("/dev/adc", 0);
+    int fd = open("/dev/tiny4412-adc", 0);
 	int len;
 	int value = -1;
 	char outbuff[255];

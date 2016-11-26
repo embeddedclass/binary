@@ -1,6 +1,6 @@
 #!/bin/sh
 
-base=/usr/sbin/fa_codec_ctrl
+base=/usr/bin/fa_codec_ctrl
 
 # See how we were called.
 case "$1" in

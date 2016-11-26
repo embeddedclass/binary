@@ -5,13 +5,13 @@
 
 1.	[ HOST PC ] # sudo apt-get install netpbm
 
-2.	[ HOST PC ] # pngtopnm /path/to/larry.png | ppmquant -fs 223 | pnmtoplainpnm > logo_larry_clut224.ppm
+2.	[ HOST PC ] # pngtopnm /path/to/larry.png | ppmquant -fs 224 | pnmtoplainpnm > logo_larry_clut224.ppm
 
-3. 	copy the created .ppm file into ~/tiny4412/Day4/linux_3.5.0_tiny4412/drivers/video/logo folder
-		[ HOST PC ] # cp -a logo_larry_clut224.ppm ~/tiny4412/Day4/linux_3.5.0_tiny4412/drivers/video/logo
+3. 	copy the created .ppm file into ~/tiny4412/experiment/tiny4412-kernel/linux_3.5.0_tiny4412/drivers/video/logo
+		[ HOST PC ] # cp -a logo_larry_clut224.ppm ~/tiny4412/experiment/tiny4412-kernel/linux_3.5.0_tiny4412/drivers/video/logo
 
 4.	Add the entry in the Kconfig (drivers/video/logo/Kconfig)
-		[ HOST PC ] # geany ~/tiny4412/Day4/linux_3.5.0_tiny4412/drivers/video/logo/Kconfig
+		[ HOST PC ] # geany ~/tiny4412/experiment/tiny4412-kernel/linux_3.5.0_tiny4412/drivers/video/logo/Kconfig
 
 		add below to "drivers/video/logo/Kconfig"
 		config LOGO_LARRY_CLUT224 bool “Test 224-colour logo” depends on LOGO default
@@ -26,7 +26,7 @@
 
 5.	Add the code in 
 		a ) logo.c
-			# geany ~/tiny4412/Day4/linux_3.5.0_tiny4412/drivers/video/logo/logo.c
+			# geany ~/tiny4412/experiment/tiny4412-kernel/linux_3.5.0_tiny4412/drivers/video/logo/logo.c
 
 			===========================================================================
 +			#ifdef CONFIG_LOGO_LARRY_CLUT224;
@@ -40,7 +40,7 @@
 			===========================================================================
 
 		b ) include/linux/linux_logo.h
-			# geany ~/tiny4412/Day4/linux_3.5.0_tiny4412/include/linux/linux_logo.h
+			# geany ~/tiny4412/experiment/tiny4412-kernel/linux_3.5.0_tiny4412/include/linux/linux_logo.h
 
 			===========================================================================
 			extern const struct linux_logo logo_m32r_clut224;
@@ -50,12 +50,12 @@
 
 6.	Add an entry in the Makefile(drivers/video/logo/Makefile)
 
-		[ HOST PC ] # geany ~/tiny4412/Day4/linux_3.5.0_tiny4412/drivers/video/logo/Makefile
+		[ HOST PC ] # geany ~/tiny4412/experiment/tiny4412-kernel/linux_3.5.0_tiny4412/drivers/video/logo/Makefile
 
 		add below to "drivers/video/logo/Makefile"
 		obj-$(CONFIG_LOGO_SUPERH_CLUT224)	+= logo_superh_clut224.o
 		obj-$(CONFIG_LOGO_M32R_CLUT224)		+= logo_m32r_clut224.o
-		obj-$(CONFIG_LOGO_LARRY_CLUT224) += logo_larry_clut224.o
++		obj-$(CONFIG_LOGO_LARRY_CLUT224) += logo_larry_clut224.o
 
 
 7.	[ HOST PC ]
@@ -74,22 +74,17 @@
 
 
 8.	Download Kernel Image and boot it
-	Please check 
-	/home/cadtc/tiny4412/Day1/Day-1-Develop_Env_exerise/boot_kernel_image.txt
 	========================================
 			Download kernel Image
 	========================================
 	
 	[ Host ]
-		2.	sudo ~/tiny4412/Day1/dnw/dnw ~/tiny4412/Day4/linux_3.5.0_tiny4412/arch/arm/boot/zImage
-		6.	ifconfig ethx 192.168.0.10
-	
+		2.	sudo dnw ~/tiny4412/experiment/tiny4412-kernel/linux_3.5.0_tiny4412/arch/arm/boot/zImage
+
 	[ Target ]
 		1.	dnw 0xc0008000
-		3.	setenv serverip 192.168.0.10
-		4.	setenv ipaddr 192.168.0.20
-		5.	set bootargs noinitrd init=/linuxrc root=/dev/nfs ip=192.168.0.20:192.168.0.10:192.168.0.1:255.255.255.0::eth0:on nfsroot=192.168.0.10:/home/cadtc/tiny4412/Day1/root_mkfs, ip=192.168.0.20 console=ttySAC0 lcd=S70
-	
+		3.	set bootargs noinitrd init=/linuxrc root=/dev/nfs ip=192.168.0.20:192.168.0.10:192.168.0.1:255.255.255.0::eth0:on nfsroot=192.168.0.10:/home/cadtc/tiny4412/experiment/root_mkfs, console=ttySAC0 lcd=S70
+
 		6.	savenv
 		7.	bootm 0xc00080000
 
