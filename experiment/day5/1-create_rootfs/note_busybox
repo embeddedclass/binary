@@ -17,12 +17,12 @@
 2. 	build busybox
 		
 		
-		a )   # cd ~/tiny4412/day5/1-create_rootfs
+		a )   # cd ~/tiny4412/experiment/day5/1-create_rootfs
 			  # wget --no-check-certificate http://www.busybox.net/downloads/busybox-1.23.0.tar.bz2
 
 		b )   # tar -xvjf  busybox-1.23.0.tar.bz2
 
-		c )   # source ~/tiny4412/set_arm_4412_toolchain_path.sh
+		c )   # source ~/tiny4412/experiment/set_arm_4412_toolchain_path.sh
 	
 		d )   # cd busybox-1.23.0 && make menuconfig
 				Busybox Settings  --->
@@ -37,7 +37,7 @@
 
 3. 	copy C library to rootfs
 
-		a ) # cp -a ~/tiny4412/opt/FriendlyARM/toolschain/4.5.1/arm-none-linux-gnueabi/sys-root/lib/*  ~/tiny4412/experiment/day5/1-create_rootfs/my_rootfs/lib/
+		a ) # cp -a ~/tiny4412/experiment/opt/FriendlyARM/toolschain/4.5.1/arm-none-linux-gnueabi/sys-root/lib/*  ~/tiny4412/experiment/day5/1-create_rootfs/my_rootfs/lib/
 
 4. 	change u-boot parameters about rootfs
 
@@ -89,8 +89,6 @@
 
 	
 7.	Download Kernel Image and boot it
-	Please check 
-	/home/cadtc/tiny4412/Day1/Day-1-Develop_Env_exerise/boot_kernel_image.txt
 	========================================
 			Download kernel Image
 	========================================
@@ -98,14 +96,14 @@
 	Please insert microUSB first
 	
 	[ Host ]
-		2.	sudo ~/tiny4412/Day1/dnw/dnw ~/tiny4412/Day1/init_boot/Image
+		2.	sudo dnw ~/tiny4412/experiment/init_boot_v2/zImage
 		6.	ifconfig ethx 192.168.0.10
 	
 	[ Target ]
 		1.	dnw 0xc0008000
 		3.	setenv serverip 192.168.0.10
 		4.	setenv ipaddr 192.168.0.20
-		5.	set bootargs noinitrd init=/linuxrc root=/dev/nfs ip=192.168.0.20:192.168.0.10:192.168.0.1:255.255.255.0::eth0:on nfsroot=192.168.0.10:/home/cadtc/tiny4412/Day1/root_mkfs, ip=192.168.0.20 console=ttySAC0 lcd=S70
+		5.	set bootargs noinitrd init=/linuxrc root=/dev/nfs ip=192.168.0.20:192.168.0.10:192.168.0.1:255.255.255.0::eth0:on nfsroot=192.168.0.10:/home/cadtc/tiny4412/experiment/day5/1-create_rootfs/my_rootfs, ip=192.168.0.20 console=ttySAC0 lcd=S70
 	
 		6.	savenv
 		7.	bootm 0xc00080000
